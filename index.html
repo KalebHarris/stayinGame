@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="assets/styles.css">
+    <title> Stay In </title>
+  </head>
+  <body onload="startGame()">
+    <div class="container">
+      <div class="column">
+        <h1> Stay in the box! </h1>
+        <p> Use arrow keys to control the square! </p>
+        <div id="canContainer"> </div>
+        <h2 id="scoreBox"> You're Score: </h2>
+        <br />
+        <button onclick="easy()" id="e">Easy</button>
+        <button onclick="medium()" id="m">Medium</button>
+        <button onclick="hard()" id="h">Hard</button>
+        <button onclick="impossible()" id="i">Impossible</button>
+      </div>
+      <div class="column">
+        <h1> High Scores </h1>
+        <p id="eS"> Easy: 0 </p>
+        <p id="mS"> Medium: 0 </p>
+        <p id="hS"> Hard: 0 </p>
+        <p id="iS"> Impossible: 0 </p>
+      </div>
+    </div>
+  </body>
+  <script src="assets/script.js"></script>
+</html>

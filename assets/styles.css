@@ -1,0 +1,24 @@
+/* Make the boxed for grid */
+* {
+  box-sizing: border-box;
+}
+
+/* Container for columns */
+.container {
+  display: table;
+  width: 100%;
+}
+/* Create columns in the grid */
+.column {
+  display: table-cell;
+  width: 50%;
+  padding: 16px;
+  border: 1px solid white;
+  border-radius: 0.5em;
+}
+
+canvas {
+  background-color: gray;
+  border: 5px dashed red;
+  border-radius: 5px;
+}
