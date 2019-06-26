@@ -224,7 +224,7 @@ function updateCanvas() {
     score += Math.pow((speed / 10), 2);
     speed += 0.0005;
   }
-  scoreBox.innerHTML = "You're Score: " + Math.round(score);
+  scoreBox.innerHTML = "Your Score: " + Math.round(score);
   eHigh.innerHTML = "Easy: " + Math.round(eHighScore);
   mHigh.innerHTML = "Medium: " + Math.round(mHighScore);
   hHigh.innerHTML = "Hard: " + Math.round(hHighScore);
