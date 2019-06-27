@@ -6,6 +6,10 @@ var eHigh = document.querySelector("#eS");
 var mHigh = document.querySelector("#mS");
 var hHigh = document.querySelector("#hS");
 var iHigh = document.querySelector("#iS");
+var eButton = document.querySelector("#e");
+var mButton = document.querySelector("#m");
+var hButton = document.querySelector("#h");
+var iButton = document.querySelector("#i");
 var eHighScore;
 var mHighScore;
 var hHighScore;
@@ -17,30 +21,46 @@ var mode = "easy";
 /* Game mode changes */
 function easy() {
   obstacle = false;
-  speed = 1;
+  speed = 1.5;
   increment = 0.005;
   mode = "easy";
+  eButton.style.border = "2px solid blue";
+  mButton.style.border = "1px solid black";
+  hButton.style.border = "1px solid black";
+  iButton.style.border = "1px solid black";
 }
 
 function medium() {
   obstacle = true;
-  speed = 1.5;
+  speed = 2.5;
   increment = 0.01;
   mode = "medium";
+  eButton.style.border = "1px solid black";
+  mButton.style.border = "2px solid blue";
+  hButton.style.border = "1px solid black";
+  iButton.style.border = "1px solid black";
 }
 
 function hard() {
   obstacle = true;
-  speed = 2;
-  increment = 0.05;
+  speed = 3;
+  increment = 0.08;
   mode = "hard";
+  eButton.style.border = "1px solid black";
+  mButton.style.border = "1px solid black";
+  hButton.style.border = "2px solid blue";
+  iButton.style.border = "1px solid black";
 }
 
 function impossible() {
   obstacle = false;
-  speed = 4;
+  speed = 4.5;
   increment = 0.01;
   mode = "impossible";
+  eButton.style.border = "1px solid black";
+  mButton.style.border = "1px solid black";
+  hButton.style.border = "1px solid black";
+  iButton.style.border = "2px solid blue";
 }
 
 /* Assign high score cookies */
@@ -76,6 +96,10 @@ if(localStorage.iHighScore) {
 function startGame() {
   myCanvas.start();
   gamePieceOne = new gamePiece(30, 30, randomValue(400), randomValue(400), "red");
+  eButton.style.border = "2px solid blue";
+  mButton.style.border = "1px solid black";
+  hButton.style.border = "1px solid black";
+  iButton.style.border = "1px solid black";
 }
 
 /* Ends game and checks high scores */
@@ -112,10 +136,23 @@ function endGame() {
   if(window.confirm("Game over! You scored " + Math.round(score) + "! Play again?")) {
     gamePieceOne.x = randomValue(400);
     gamePieceOne.y = randomValue(400);
+    score = 0;
     gamePieceOne.moveX = 0;
     gamePieceOne.moveY = 0;
-    score = 0;
-    speed = 1;
+    switch(mode) {
+      case "easy":
+          easy();
+        break;
+      case "medium":
+          medium();
+        break;
+      case "hard":
+          hard();
+        break;
+      case "impossible":
+          impossible();
+        break;
+    }
   } else {
     window.close();
   }
@@ -190,8 +227,6 @@ function gamePiece(width, height, x, y, color) {
     if(isInside() == true) {
       this.x += this.moveX;
       this.y += this.moveY;
-      moveX = 0;
-      moveY = 0;
     } else {
       endGame();
     }
